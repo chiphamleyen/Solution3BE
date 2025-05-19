@@ -2,6 +2,7 @@ FROM tiangolo/uvicorn-gunicorn-fastapi:python3.11
 
 WORKDIR /dir
 COPY ./requirements.txt /dir/requirements.txt
+RUN pip install --upgrade pip
 RUN pip install -r /dir/requirements.txt
 
 COPY ./app /dir/app

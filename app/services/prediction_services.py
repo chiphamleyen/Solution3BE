@@ -37,16 +37,16 @@ class PredictionService:
         pe_section_df = pd.read_csv(io.BytesIO(pe_section_file), encoding='utf-8', sep=",")
         api_function_df = pd.read_csv(io.BytesIO(api_function_file), encoding='utf-8', sep=",")
 
-        try:
-            prediction_df = get_prediction(
-                dll_df=dll_df,
-                pe_header_df=pe_header_df,
-                pe_section_df=pe_section_df,
-                api_function_df=api_function_df,
-            )
-        except Exception as e:
-            _logger.error(f"Error in prediction: {e}")
-            raise BadRequestException("File format is not correct")
+        # try:
+        prediction_df = get_prediction(
+            dll_df=dll_df,
+            pe_header_df=pe_header_df,
+            pe_section_df=pe_section_df,
+            api_function_df=api_function_df,
+        )
+        # except Exception as e:
+        #     _logger.error(f"Error in prediction: {e}")
+        #     raise BadRequestException("File format is not correct")
 
         history_data = []
         for index, row in prediction_df.iterrows():
